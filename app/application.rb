@@ -7,12 +7,13 @@ class Application
     req = Rack::Request.new(env)
 
     search_item = req.params["q"]
-
-  if @@items.include?(search_item)
-    resp.write "#{search_item} is one of our items"
-  else
-    resp.write "Item not found"
-  end
+    
+  if req.path.match(/items/)
+    if @@items.include?(search_item)
+      resp.write "#{search_item} is one of our items"
+    else
+      resp.write "Item not found"
+    end
   else
     resp.write "Route not found"
     resp.status = 404
