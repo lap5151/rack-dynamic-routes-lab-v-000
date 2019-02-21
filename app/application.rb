@@ -11,7 +11,6 @@ class Application
   if req.path.match(/items/)
     item = req.path.split("/")
     search_item = item[2]
-    binding.pry
     if @@items.find {|item| search_item == item.name}
       resp.write "#{item.price}"
     else
