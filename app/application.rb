@@ -10,7 +10,6 @@ class Application
     search_item = req.params["q"]
 
   if req.path.match(/items/)
-    #binding.pry
     if @@items.include?(search_item)
       resp.write "#{item.price}\n"
       binding.pry
