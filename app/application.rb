@@ -6,9 +6,12 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-  if req.path.match(/items/)
-    @@items.each do |item|
-      resp.write "#{item}\n"
+    search_item = req.params["q"]
+
+  if @@items.include?(search_item)
+    resp.write "#{search_item} is one of our items"
+  else
+    resp.write "Item not found"
   end
   else
     resp.write "Route not found"
