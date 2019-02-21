@@ -11,7 +11,7 @@ class Application
   if req.path.match(/items/)
     search_item = req.params["q"]
     if @@items.include?(search_item)
-      resp.write "#{item.price}\n"
+      resp.write "#{item.price}"
     else
       resp.write "Item not found"
       resp.status = 400
