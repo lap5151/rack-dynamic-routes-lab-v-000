@@ -12,7 +12,8 @@ class Application
     item = req.path.split("/")
     search_item = item[2]
     if @@items.find {|item| search_item == item.name}
-      resp.write "#{item.price}"
+      instance = @@items.find {|item| search_item == item.name}
+      resp.write "#{instance.price}"
     else
       resp.write "Item not found"
       resp.status = 400
